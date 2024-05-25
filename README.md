@@ -1,9 +1,10 @@
-NFC Reader is a lighweight android nfc smart card reader library. NFC Reader will allow you to get basic data from smart card(VISA, Mastercard for now) such as card's brand, number, expire date, holder name
+# Card NFC Reader
+Card NFC Reader is a lightweight and easy-to-use library for reading smart card information using NFC technology. It supports retrieving card brand, card number, and expiration date from compatible smart cards.
 
-# Gradle
+## Gradle
 ```groovy
 dependencies {
-    implementation 'com.github.linhnvt.nfcreader.1-.01-.01'
+    implementation 'com.github.linhnvtit:card-nfc-reader:1.0.0'
 }
 ```
 ```groovy
@@ -13,15 +14,15 @@ repositories {
 }
 ```
 
-# Requirement
+## Requirement
 Following instructions from [Android docs](https://developer.android.com/develop/connectivity/nfc)
 #### Mandatory:
  * Enable NFC on your device
  * Add ```<uses-permission android:name="android.permission.NFC" />``` in Manifest.xml 
 
-# Let's read smart card's data
+## Usage
 
-## Prepare to receive data 
+### Prepare to receive data 
 * #### Inherit your MainActivity with NfcReaderActivity
 NfcReaderActivity will handle all the NFC Configurations needed for you.
 ```kotlin
