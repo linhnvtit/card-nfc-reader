@@ -1,0 +1,17 @@
+[versions]
+appcompatVersion = "1.6.1"
+coreKtx = "1.13.1"
+android = "8.2.0"
+kotlinAndroid = "1.9.0"
+androidMaterial = "1.11.0"
+
+[libraries]
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+android-material = { module = "com.google.android.material:material", version.ref = "androidMaterial" }
+
+[plugins]
+android-library = { id = "com.android.library", version.ref = "android" }
+android-application = { id = "com.android.application", version.ref = "android" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinAndroid" }
+maven-publish ={ id = "maven-publish"}
