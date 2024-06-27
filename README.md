@@ -1,10 +1,11 @@
 # Card NFC Reader
-Card NFC Reader is a lightweight and easy-to-use library for reading smart card information using NFC technology. It supports retrieving card brand, card number, and expiration date from compatible smart cards.
+- Card NFC Reader is a lightweight and easy-to-use library for reading smart card information using NFC technology. It supports retrieving card brand, card number, and expiration date from compatible smart cards.
+- Card NFC Reader now supports Mastercard and Visa, with plans to include other card schemes in upcoming versions.
 
 ## Gradle
 ```groovy
 dependencies {
-    implementation 'com.github.linhnvtit:card-nfc-reader:1.0.0'
+    implementation 'com.github.linhnvtit:card-nfc-reader:1.0.1'
 }
 ```
 ```groovy
