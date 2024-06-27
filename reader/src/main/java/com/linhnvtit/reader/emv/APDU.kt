@@ -35,6 +35,9 @@ object APDU {
             "9C" to "00",
             "9F35" to "22",
             "9F4E" to "0000000000000000000000000000000000000000000000000000000000000000",
+            "9F1D" to "0F80000000000000",
+            "9F5C" to "0000000000100000",
+            "9F40" to "50A0000000",
             "9F37" to unpredictableNumberT9F37
         )
 
@@ -116,13 +119,13 @@ object APDU {
                 if (tag == "61") {
                     decodeTLV(value).let {
                         requireNotNull(it["4F"]) { "Require field 4F" }
-                        requireNotNull(it["50"]) { "Require field 50" }
+//                        requireNotNull(it["50"]) { "Require field 50" }
 //                        requireNotNull(it["87"])
 
                         add(
                             EntryTag61(
                                 aidT84 = it["4F"]!!,
-                                labelT50 = it["50"]!!,
+                                labelT50 = it["50"] ?: "",
                                 priorityT87 = it["87"] ?: "",
                                 kernelIdentifierT9F2A = it["9F2A"] ?: "",
                                 extendedSelectionT9F29 = it["9F29"] ?: "",
@@ -149,9 +152,9 @@ object APDU {
         val hash: HashMap<String, String> = decodeTLV(data)
 
         // validate response
-//        requireNotNull(hash["57"])
         requireNotNull(hash["82"]) { "Require field 82" }
         requireNotNull(hash["94"]) { "Require field 94" }
+//        requireNotNull(hash["57"])
 //        requireNotNull(hash["9F10"])
 //        requireNotNull(hash["9F26"])
 //        requireNotNull(hash["9F27"])

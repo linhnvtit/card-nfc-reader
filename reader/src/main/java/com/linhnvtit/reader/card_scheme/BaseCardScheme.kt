@@ -1,6 +1,7 @@
 package com.linhnvtit.reader.card_scheme
 
 import android.nfc.tech.IsoDep
+import com.linhnvtit.reader.EMPTY
 import com.linhnvtit.reader.NfcReaderLog
 import com.linhnvtit.reader.emv.APDU
 import com.linhnvtit.reader.emv.EmvState
@@ -97,6 +98,7 @@ open class BaseCardScheme(
                 brand = CardData.getCardBrand(this),
                 cardNumber = tags["5A"] ?: throw Exception("require field 5A"),
                 expireDate = tags["5F24"] ?: throw Exception("require field 5F24"),
+                cardHolderName = tags["5F20"] ?: EMPTY,
             )
         )
     }

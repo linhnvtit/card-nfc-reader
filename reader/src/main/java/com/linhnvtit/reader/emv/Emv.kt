@@ -122,12 +122,19 @@ class Emv(
     }
 
     private suspend fun selectAID(stepData: EmvState.SelectAid, isoDep: IsoDep) = coroutineScope.launch {
-        selectAIDExecute(stepData, isoDep).onSuccess {
+        selectAIDExecute(stepData, isoDep).onSuccess { tags ->
             NfcReaderLog.d("SelectAID success")
+
             stateChannel.send(
-                EmvState.GetProcessingOption(
-                    tags = it, cardScheme = kernel.detectCardScheme(it["84"]!!)
-                )
+                kernel.detectCardScheme(tags["84"]!!).let {
+                    if (it != null) {
+                        EmvState.GetProcessingOption(
+                            tags = tags, cardScheme = it
+                        )
+                    } else {
+                        EmvState.Fail(reason = "Unsupported card scheme")
+                    }
+                }
             )
         }.onFailure {
             NfcReaderLog.e("SelectAID fail ${it.message}")

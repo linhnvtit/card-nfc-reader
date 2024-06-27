@@ -3,7 +3,8 @@ package com.linhnvtit.reader.card_scheme
 data class CardData(
     val brand: Brand = Brand.VISA,
     val cardNumber: String = "",
-    val expireDate: String = ""
+    val expireDate: String = "",
+    val cardHolderName: String = ""
 ) {
     companion object {
         fun getCardBrand(scheme: CardScheme): Brand {

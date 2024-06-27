@@ -22,11 +22,11 @@ class Kernel(
         masterCardAids = getAids(context, R.raw.master_card_aids)
     }
 
-    fun detectCardScheme(aid: String): CardScheme {
+    fun detectCardScheme(aid: String): CardScheme? {
         return when (aid) {
             in visaAids -> Visa(CoroutineScope(Dispatchers.Main + SupervisorJob()))
             in masterCardAids -> MasterCard(CoroutineScope(Dispatchers.Main + SupervisorJob()))
-            else -> throw Exception("Card scheme not supported")
+            else -> null
         }
     }
 
